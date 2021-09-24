@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MVCFormula.Models.FormulaDriver>
+
+@{ ViewData["Title"] = "Driving List"; }
+
+<h1>Driving</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Formula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Driver)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Chassis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pts)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Formula.Model)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Driver.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Chassis)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Pts)
+    </td>
+    <td>
+        <a asp-action="OthersReview" asp-route-id="@item.Id">Details</a>
+    </td>
+</tr>}
+    </tbody>
+</table>

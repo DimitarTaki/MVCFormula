@@ -1,0 +1,50 @@
+﻿@model MVCFormula.Models.Formula
+@{ ViewData["Title"] = "Car Reviews"; }
+
+<h3>@Html.DisplayFor(model => model.Manufacturer.Name) @Html.DisplayFor(model => model.Model)</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Driver
+            </th>
+            <th>
+                Fuel
+            </th>
+            <th>
+                Chassis
+            </th>
+            <th>
+                Pts
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Drivers)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Driver.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fuel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Chassis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pts)
+            </td>
+            <td>
+                <a asp-controller="Driver" asp-action="OthersReview" asp-route-id="@item.Id">Details</a>
+            </td>
+        </tr>}
+    </tbody>
+</table>
+
+<div>
+    <a asp-controller="Guest" asp-action="FormulaDetails" asp-route-id="@Model.Id">Go Back</a>
+</div>
+

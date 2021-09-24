@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MVCFormula.Models.Manufacturer>
+
+@{ ViewData["Title"] = "Manufacturers"; }
+
+<h1>Manufacturers</h1>
+
+<form asp-controller="Guest" asp-action="Manufacturers" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-controller="Guest" asp-action="Manufacturers">Back to Full List</a>
+        </p>
+    </div>
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Logo
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+               @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Headquarters)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Founded)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            
+
+<tr>
+    
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Country)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Headquarters)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Founded)
+    </td>
+    <td>
+        <a asp-action="ManufacturerDetails" asp-route-id="@item.Id">Details</a>
+    </td>
+</tr>}
+    </tbody>
+</table>

@@ -1,0 +1,41 @@
+﻿@model MVCFormula.Models.Manufacturer
+@{ ViewData["Title"] = "FormulasByManufacturer"; }
+
+
+<h3>@Html.DisplayFor(model => model.Name) Models</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Model Year
+            </th>
+            <th>
+                Type
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Formulas)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Model)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ModelYear)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tyres)
+    </td>
+    <td>
+        <a asp-controller="Driver" asp-action="FormulaDetails" asp-route-id="@item.Id">Details</a>
+    </td>
+</tr>}
+    </tbody>
+</table>
+

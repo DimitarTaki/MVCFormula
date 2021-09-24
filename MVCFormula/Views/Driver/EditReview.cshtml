@@ -1,0 +1,56 @@
+﻿@model MVCFormula.ViewModels.ReviewEditViewModel
+@{ ViewData["Title"] = "Edit Driving"; }
+
+<h1>Edit Driving</h1>
+<hr />
+<h5><b>@Html.DisplayNameFor(model => model.Review.Formula.Model)</b>: @Html.DisplayFor(model => model.Review.Formula.Model)</h5>
+<h5><b>@Html.DisplayNameFor(model => model.Review.Fuel)</b>: @Html.DisplayFor(model => model.Review.Fuel)</h5>
+<h5><b>@Html.DisplayNameFor(model => model.Review.Chassis)</b>: @Html.DisplayFor(model => model.Review.Chassis)</h5>
+<h5><b>@Html.DisplayNameFor(model => model.Review.Pts)</b>: @Html.DisplayFor(model => model.Review.Pts)</h5>
+<h5><b>@Html.DisplayNameFor(model => model.Review.Driver.FullName)</b>: @Html.DisplayFor(model => model.Review.Driver.FullName)</h5>
+<hr />
+<div class="row">
+    <form asp-action="EditReview" asp-route-id="@Model.Review.Id">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Review.Id" />
+        <div class="col-md-12">
+            <div class="form-group">
+                <label asp-for="Review.Formula.Model" class="control-label"></label>
+                <input asp-for="Review.Formula.Model" class="form-control" disabled />
+                <span asp-validation-for="Review.Formula.Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Review.Fuel" class="control-label"></label>
+                <input asp-for="Review.Fuel" class="form-control" disabled />
+                <span asp-validation-for="Review.Fuel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Review.Chassis" class="control-label"></label>
+                <input asp-for="Review.Chassis" class="form-control" disabled />
+                <span asp-validation-for="Review.Chassis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Review.Pts" class="control-label"></label>
+                <input asp-for="Review.Pts" class="form-control" />
+                <span asp-validation-for="Review.Pts" class="text-danger"></span>
+            </div>
+            
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+
+            <div>
+                <a asp-action="Reviews" asp-route-id="@Model.Review.DriverId">Back to Reviews</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">$(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });</script>
+}

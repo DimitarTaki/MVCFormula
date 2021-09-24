@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MVCFormula.Models.Formula>
+
+@{ ViewData["Title"] = "Cars"; }
+
+<h1>Cars</h1>
+
+<form asp-controller="Driver" asp-action="Cars" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by Model: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-controller="Driver" asp-action="Cars">Back to Full List</a>
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Manufacturer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModelYear)
+            </th>
+            <th>
+                <a asp-controller="Guest" asp-action="Formulas" asp-route-sortOrder="@ViewData["TypeSortParm"]">@Html.DisplayNameFor(model => model.Model)</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Manufacturer.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Model)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ModelYear)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tyres)
+    </td>
+    <td>
+        <a asp-action="CarDetails" asp-route-id="@item.Id">Details</a> |
+        <a asp-controller="Formulae" asp-action="DrivingFormula" asp-route-id="@item.Id">Driving</a>
+    </td>
+</tr>}
+    </tbody>
+</table>

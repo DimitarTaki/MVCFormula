@@ -1,0 +1,57 @@
+﻿@model MVCFormula.Models.FormulaDriver
+
+@{ ViewData["Title"] = "Others Driving Details";
+                var photoPath = "~/DriverImages/" + (Model.Driver.DriverPicture ?? "blankImage.png"); }
+
+<img src="@photoPath"
+     height="120" width="120"
+     asp-append-version="true"
+     style="float:left; margin-right:10px;" />
+<h1>Review for @Html.DisplayFor(model => model.Formula.Manufacturer.Name) @Html.DisplayFor(model => model.Formula.Model)</h1>
+<h1>by @Html.DisplayFor(model => model.Driver.FullName)</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Formula)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Formula.ModelYear) @Html.DisplayFor(model => model.Formula.Manufacturer.Name) @Html.DisplayFor(model => model.Formula.Model)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Formula.Model)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Formula.Model)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Driver)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Driver.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Fuel)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Fuel)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Chassis)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Chassis)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pts)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pts)
+        </dd>
+     
+    </dl>
+</div>
+<div>
+    <a asp-action="ReviewList">All Drivings</a>
+</div>

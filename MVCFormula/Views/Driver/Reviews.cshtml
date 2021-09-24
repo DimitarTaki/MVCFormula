@@ -1,0 +1,61 @@
+﻿@model MVCFormula.Models.Driver
+
+@{ ViewData["Title"] = "Formulas by Driver";
+                var photoPath = "~/DriverImages/" + (Model.DriverPicture ?? "blankImage.png"); }
+
+
+<img src="@photoPath"
+     height="120" width="120"
+     asp-append-version="true"
+     style="float:left; margin-right:10px;" />
+<h2>@Html.DisplayFor(model => model.FullName)</h2>
+<h4>List of Cars</h4>
+
+<p>
+    <a asp-action="CreateReview">Create a New Driving</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Formulas.FirstOrDefault().Formula.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Formulas.FirstOrDefault().Fuel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Formulas.FirstOrDefault().Chassis)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Formulas.FirstOrDefault().Pts)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Formulas)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Formula.Model)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Fuel)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Chassis)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Pts)
+    </td>
+   
+    <td>
+        <a asp-action="EditReview" asp-route-id="@item.Id">Edit</a> |
+        <a asp-action="ReviewDetails" asp-route-id="@item.Id">Details</a>
+    </td>
+</tr>}
+    </tbody>
+</table>
+

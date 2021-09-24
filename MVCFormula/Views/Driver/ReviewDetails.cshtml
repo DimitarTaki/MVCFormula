@@ -1,0 +1,56 @@
+﻿@model MVCFormula.Models.FormulaDriver
+@{ ViewData["Title"] = "Driving Details"; }
+
+<h1>Driving Details</h1>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Formula.Model)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Formula.Model)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Driver.FullName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Driver.FullName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Formula.ModelYear)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Formula.ModelYear)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Formula.Tyres)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Formula.Tyres)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Fuel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fuel) 
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Chassis)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Chassis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pts)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pts) 
+        </dd>
+      
+    </dl>
+</div>
+<div>
+    <a asp-action="EditReview" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Reviews" asp-route-id="@Model.DriverId">Back to Driving</a>
+</div>

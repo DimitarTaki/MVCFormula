@@ -1,0 +1,41 @@
+﻿@model MVCFormula.Models.Formula
+
+@{ ViewData["Title"] = "Car Details";
+}
+
+<h1>Car Details</h1>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.Manufacturer.Name) @Html.DisplayFor(model => model.Model) | <a asp-controller="Formlae" asp-action="DrivingFormula" asp-route-id="@Model.Id">Reviews</a></h4>
+    <hr />
+   
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Manufacturer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Manufacturer.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ModelYear)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ModelYear)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tyres)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tyres)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Formulas">Back to List</a>
+</div>
